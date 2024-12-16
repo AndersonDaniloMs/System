@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState,useEffect } from "react";
 import { FaPlus,FaX} from "react-icons/fa6";
 import style from "./Categoria.module.css";
-
+import { useCallback } from "react";
 
 
 
@@ -18,52 +18,53 @@ export default function AdicionarCategoria(props:IInputs){
   const[Categorias,setCategorias]=useState<Categoria[]>([]);
 
 
+const addCategory = useCallback(async () => {
+  const categoria = new Categoria(nomeCategoria);
+  try {
+    const response = await axios.get(`http://localhost:3001/api/categorias`);
+    const categorias = response.data;
+    setCategorias(categorias);
+    const categoryName = categoria.getNomeCategoria().toLowerCase();
+    const singularOrPluralRegex = new RegExp(`^${categoryName.replace(/s$/, '')}(s)?$`, 'i');
+    const existingCategory = categorias.find((cat: any) => singularOrPluralRegex.test(cat.nomeCategoria.toLowerCase()));
 
-  const addCategory = async () => {
-    const categoria = new Categoria(nomeCategoria);
-    try {
-      const response = await axios.get(`http://localhost:3001/api/categorias`);
-      const categorias = response.data;
-      setCategorias(categorias);
-      const categoryName = categoria.getNomeCategoria().toLowerCase();
-      const singularOrPluralRegex = new RegExp(`^${categoryName.replace(/s$/, '')}(s)?$`, 'i');
-      const existingCategory = categorias.find((cat:any) => singularOrPluralRegex.test(cat.nomeCategoria.toLowerCase()));
-      
-      if (existingCategory) {
-        setMensagem("Categoria já registrada");
-        setMostrarMensagem(true);
-        setTimeout(() => {
-          setMostrarMensagem(false);
-        }, 3000);
-      } else {
-        try {
-          const responsePost = await axios.post(`http://localhost:3001/api/categorias`, {
-            nomeCategoria: categoria.getNomeCategoria(),
-          });
-          if (responsePost.status === 201 || responsePost.status === 200) {
-            setMensagem("Categoria registrada com sucesso");
-            setCategorias([...categorias, responsePost.data]);
-            setMostrarMensagem(true);
-            setTimeout(() => {
-              setMostrarMensagem(false);
-            }, 3000);
-          } else {
-            alert("Erro ao Registrar categoria");
-          }
-        } catch (error) {
-          console.log("Erro ao Registrar categoria", error);
+    if (existingCategory) {
+      setMensagem("Categoria já registrada");
+      setMostrarMensagem(true);
+      setTimeout(() => {
+        setMostrarMensagem(false);
+      }, 3000);
+    } else {
+      try {
+        const responsePost = await axios.post(`http://localhost:3001/api/categorias`, {
+          nomeCategoria: categoria.getNomeCategoria(),
+        });
+        if (responsePost.status === 201 || responsePost.status === 200) {
+          setMensagem("Categoria registrada com sucesso");
+          setCategorias([...categorias, responsePost.data]);
+          setMostrarMensagem(true);
+          setTimeout(() => {
+            setMostrarMensagem(false);
+          }, 3000);
+        } else {
+          alert("Erro ao Registrar categoria");
         }
+      } catch (error) {
+        console.log("Erro ao Registrar categoria", error);
       }
-    } catch (error) {
-      console.log("Erro ao buscar categorias", error);
     }
-  };
+  } catch (error) {
+    console.log("Erro ao buscar categorias", error);
+  }
+}, [nomeCategoria]); // Dependência de nomeCategoria
+
+
 
   useEffect(() => {
     if (nomeCategoria) {
       addCategory();
     }
-  }, [nomeCategoria]);
+  }, [nomeCategoria,addCategory]);
 
 
     return(

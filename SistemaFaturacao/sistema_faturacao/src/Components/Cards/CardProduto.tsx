@@ -1,22 +1,21 @@
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect,useState } from "react";
-import style from "@/pages/Vender.module.css";
+import style from "/Users/HP/Downloads/Projects/System/SistemaFaturacao/sistema_faturacao/pages/Vender.module.css";
 import { useSelectedProducts } from '@/Hooks/SelectProdutsContext';
 
 export default function CardProduto() {
   const { addProduct ,produts,setProduts } = useSelectedProducts();
   const [categories, setCategories] = useState([]);
 
-
-  const FormatarNumero=(Numeros:number):string=>{
+  const FormatarNumero = (Numeros: number): string => {
     const formattedPayment = new Intl.NumberFormat("pt-PT", {
       style: "decimal",
       minimumFractionDigits: 2,
     }).format(Numeros);
     return formattedPayment;
-  }
+  };
 
-  const getCategories = async () => {
+  const getCategories = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3001/api/categorias");
       if (response.status === 200) {
@@ -28,26 +27,26 @@ export default function CardProduto() {
     } catch (error: any) {
       console.log("Erro na requisição na api/categorias:", error);
     }
-  };
+  }, []); // Agora getCategories está memoizada
 
-  const getProduts = async () => {
+  const getProduts = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3001/api/produtos");
       if (response.status === 200) {
         setProduts(response.data);
         console.log("Produtos carregados:", response.data);
       } else {
-        console.log("produtos não carregadas - ", "status:", response.status);
+        console.log("produtos não carregados - ", "status:", response.status);
       }
     } catch (error: any) {
       console.log("Erro na requisição na api/produtos:", error);
     }
-  };
+  }, [setProduts]); // Agora getProduts está memoizada
 
   useEffect(() => {
     getCategories();
     getProduts();
-  }, []);
+  }, [getCategories, getProduts]); // Adicionando as funções como dependências
 
   const categoryProduts = (idProduts: number): string => {
     let nomeCategoria: string = "";
@@ -77,4 +76,4 @@ export default function CardProduto() {
       ))}
     </div>
   );
-};
+}

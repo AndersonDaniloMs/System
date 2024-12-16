@@ -1,6 +1,5 @@
-import Image from "next/image";
+
 import Login from "../src/Components/Login";
-import Clientes from "./Clientes";
 
 export default function Home() {
   return (
