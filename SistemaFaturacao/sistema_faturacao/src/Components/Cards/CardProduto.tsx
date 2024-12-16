@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
-import style from "/Users/HP/Downloads/Projects/System/SistemaFaturacao/sistema_faturacao/pages/Vender.module.css";
+import style from "./Vender.module.css";
 import { useSelectedProducts } from '@/Hooks/SelectProdutsContext';
 
 export default function CardProduto() {
