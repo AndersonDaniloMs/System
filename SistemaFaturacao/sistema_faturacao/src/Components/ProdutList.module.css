@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.container {
+  max-width: 100%;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+.conteiner_produtosList {
+  max-width: 100%;
+  padding: 20px;
+  margin: 0px 0px;
+  border-radius: 5px;
+  /*border: 0.5px solid #7a7a7ace;*/
+}
+.conteiner_Fatura{
+  max-width: 100%;
+  padding: 20px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  opacity: 1.6;
+}
+.conteiner_Fatura .table th{
+  background-color: #ffffff;
+  color: #000;
+}
+.conteiner_Fatura .table td{
+  background-color: #ffffff;
+}
+.conteiner_allprodutosList {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.conteiner_allprodutosList h1 {
+  width: 100%;
+  font-size: 30px;
+  color: #000;
+  font-weight: 600;
+  margin: 10px 20px;
+  color: #263652ef;
+}
+.container_Filter {
+  display: flex;
+  gap: 10px;
+  margin: 10px 20px;
+}
+.iconFilter {
+  transition: all 0.2s ease-in-out;
+}
+.container_Filter .iconFilter:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th {
+  padding: 5px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #263652ef;
+  font-weight: 600;
+  color: #fff;
+  font-size: 15px;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid #7a7a7ace;
+}
+.table td {
+  color: #000;
+  background-color: #7a7a7a1a;
+}
+.table td button {
+  margin: 5px;
+
+  color: #fff;
+  padding: 5px;
+  box-shadow: 0px 0px 10px rgba(16, 26, 28, 0.298);
+  border-radius: 5px;
+}
+.inputSearch:focus-visible {
+  outline: none;
+}

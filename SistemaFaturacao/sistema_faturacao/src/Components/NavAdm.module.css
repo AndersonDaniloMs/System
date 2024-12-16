@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.NavigatorAdm {
+  width: 100%;
+  border-bottom: 0.5px solid #7a7a7ace;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #263652ef;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+.navigator_text_icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.NavigatorAdm h1 {
+  width: 100%;
+  margin-left: 40px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.navigator_icon {
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.16);
+  z-index: 9999;
+  position: fixed;
+  left: 15px;
+}
+.navigator_icon:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+}
+.NavigatorAdm .navLinks_Horizontal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.Link {
+  /*background-color: #35558c;*/
+  padding: 8px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.Link:hover {
+  background-color: #35558c;
+  padding: 8px;
+  border-radius: 5px;
+}
+.btnsair {
+  width: 60px;
+  padding: 2px;
+
+  text-align: center;
+  border-radius: 5px;
+  background-color: red;
+}
+.btnsair:hover {
+  background-color: rgb(162, 47, 47) !important;
+}
+/*Testando Menu Vertical*/
+
+.MenuVertical {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #363636f3;
+  box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.16);
+  display: none;
+  transition: all 0.5s linear;
+  z-index: 999;
+}
+.MenuVertical .navLinks_Vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 60px 0px 0px 0px;
+  padding: 10px;
+}
+.MenuVertical .navLinks_Vertical a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 15px;
+}
+.navLinks_Vertical a:hover {
+  background-color: #35558c;
+}
+.active {
+  display: block;
+ 
+}

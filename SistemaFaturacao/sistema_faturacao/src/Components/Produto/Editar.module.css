@@ -1,0 +1,23 @@
+/*Erros*/
+.inputError:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 0 4px red !important;
+}
+.errorMessage {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 1px;
+  text-wrap: wrap;
+}
+.sucessMessage{
+  font-size: 12px;
+  color: rgb(120, 222, 120);
+  margin-bottom: 4px;
+  text-wrap: wrap;
+}
+.inputSucess{
+  outline: none !important;
+  border: none !important;
+  box-shadow: 0 0 4px rgb(120, 222, 120) !important;
+}
